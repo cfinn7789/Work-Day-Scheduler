@@ -17,5 +17,5 @@ This project is to be used to keep track of your work day.
 
 # Links
 
-[My Github](https://github.com/cfinn7789/)
-[The website](https://cfinn7789.github.io//)
+[My Github](https://github.com/cfinn7789/Work-Day-Scheduler)
+[The website](https://cfinn7789.github.io/)
