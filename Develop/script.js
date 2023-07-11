@@ -9,16 +9,17 @@ $(document).ready(function() { //Waits for the function to finish loading before
     localStorage.setItem(time, text); //Stores the value of the "text" variable into the web browser's local storage, using the "time" variable as the key
   });
 
-  for (var i = 8; i <= 17; i++) { //Initializes variable "i" and increments it by 1 until it reaches 17
-    var hour = ".hour" + i; //Concatenates the string "#hour" with the current value of "i"
-    $(hour + " .description").val(localStorage.getItem("hour" + i)); //Uses the constructed hour variable to select an element with the class "description"
-  }
-
+//YO the screw up might be the for loop maybe we're not translating it to parseInt correctly. Note to self.
 function timeTracker(){
   var currentTime = dayjs().format('H'); //Retrieves the current hour by using the hour() function provided by dayjs
-  var timeRow = parseInt($(this).attr("id").split("hour")[1]); //Retrieves the value of the id attribute then splits it into an array of substrings and converts it into an integer
+
+  for (var i = 8; i <= 17; i++) { //Initializes variable "i" and increments it by 1 until it reaches 17
+    var hour = ".hour" + i; //Concatenates the string "#hour" with the current value of "i"
+    var timeRow = parseInt($(this).attr("id").split("hour")[1]); //Retrieves the value of the id attribute then splits it into an array of substrings and converts it into an integer
   console.log(timeRow, currentTime);
 
+  $(hour + " .description").val(localStorage.getItem("hour" + i)); //Uses the constructed hour variable to select an element with the class "description"
+  
 
   if(timeRow < currentTime){ //Checks if the value of timeRow is less than currentTime and if so, adds a class of "past"
     $(this).addClass("past");
@@ -33,6 +34,7 @@ function timeTracker(){
     $(this).removeClass("present");
     $(this).addClass("future");
   }
+}
 }
 $(".time-block").each(timeTracker);
 });
